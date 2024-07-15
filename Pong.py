@@ -92,8 +92,40 @@ def play():
     #move ball
     x,  y = ball.position()
     x += ballChangeInX
-    x += ballChangeInY
+    y += ballChangeInY
     ball.setposition(x, y)
 
     #collision checks
+    if isColliding(ball, player):
+        ballChangeInX *= -1
+        score += 10
+        scoreboard.undo()
+        scoreboard.write("Score {}".format(score), align = "left", font = ("Arial", 16, "normal"))
+    elif isColliding(ball, computer):
+        ballChangeInX *= -1
+    elif y < -300 or y > 300:
+        ballChangeInY *= -1
+    elif x > 300:
+        ballChangeInY *= -1
+    elif x < -300:
+        print("Game Over")
+        screen.bye()
+        return
     
+    #computer movement
+    computer.forward(computerSpeed)
+    y = computer.ycor()
+    if y < -250 or y > 250:
+        computerSpeed *= -1
+    
+    #update timer
+    seconds += 1
+    timer.undo()
+    timer.write("Time {}".format(seconds),  align = "left", font = ("Arial", 16, "normal"))
+    screen.ontimer(play, 50)
+
+    screen.update()
+
+screen.tracer(False)
+play()
+screen.mainloop()
