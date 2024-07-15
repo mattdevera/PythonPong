@@ -76,8 +76,8 @@ def moveDown():
         y = -260
         player.sety(y)
     screen.update()
-screen.onkey(moveUp, "w")
-screen.onkey(moveDown, "s")
+screen.onkeypress(moveUp, "w")
+screen.onkeypress(moveDown, "s")
 
 screen.listen()
 
