@@ -65,14 +65,14 @@ ballChangeInY = -5
 def moveUp():
     player.forward(playerSpeed)
     y = player.ycor()
-    if y > 265:
+    if y > 260:
         y = 260
         player.sety(y)
     screen.update()
 def moveDown():
     player.backward(playerSpeed)
     y = player.ycor()
-    if y < -265:
+    if y < -260:
         y = -260
         player.sety(y)
     screen.update()
