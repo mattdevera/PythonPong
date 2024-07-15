@@ -80,3 +80,20 @@ screen.onkey(moveUp, "w")
 screen.onkey(moveDown, "s")
 
 screen.listen()
+
+#collision function
+def isColliding(one, two):
+    return one.distance(two) < 15
+
+#game function
+def play():
+    global ballChangeInX, ballChangeInY, computerSpeed, seconds, score
+
+    #move ball
+    x,  y = ball.position()
+    x += ballChangeInX
+    x += ballChangeInY
+    ball.setposition(x, y)
+
+    #collision checks
+    
