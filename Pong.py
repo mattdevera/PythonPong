@@ -11,7 +11,7 @@ border.speed("fastest")
 border.color("white")
 border.pensize(3)
 border.penup()
-border.setposition(-300, 300)
+border.setposition(-300, -300)
 border.pendown()
 for _ in range(4):
     border.forward(600)
@@ -55,7 +55,7 @@ ball = Turtle("circle", visible = False)
 ball.speed("fast")
 ball.color("white")
 ball.penup()
-ball.sety(265)
+#ball.sety(265)
 ball.showturtle()
 ballSpeed = 15
 ballChangeInX = 5
