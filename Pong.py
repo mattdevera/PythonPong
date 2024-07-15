@@ -60,3 +60,23 @@ ball.showturtle()
 ballSpeed = 15
 ballChangeInX = 5
 ballChangeInY = -5
+
+#movement functions and keybindings
+def moveUp():
+    player.forward(playerSpeed)
+    y = player.ycor()
+    if y > 265:
+        y = 260
+        player.sety(y)
+    screen.update()
+def moveDown():
+    player.backward(playerSpeed)
+    y = player.ycor()
+    if y < -265:
+        y = -260
+        player.sety(y)
+    screen.update()
+screen.onkey(moveUp, "w")
+screen.onkey(moveDown, "s")
+
+screen.listen()
