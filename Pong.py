@@ -1,4 +1,5 @@
 from turtle import Turtle, Screen
+import random
 
 #implementation for the display
 #screen
@@ -99,11 +100,17 @@ def play():
     #collision checks
     if isColliding(ball, player):
         ballChangeInX *= -1
+        #random direction upon hit
+        directions = [-1, 1]
+        ballChangeInY *= random.choice(directions)
         score += 10
         scoreboard.undo()
         scoreboard.write("Score {}".format(score), align = "left", font = ("Arial", 16, "normal"))
     elif isColliding(ball, computer):
         ballChangeInX *= -1
+        #random direction upon hit
+        directions = [-1, 1]
+        ballChangeInY *= random.choice(directions)
     elif y < -290 or y > 290:
         ballChangeInY *= -1
     elif x < -300 or x > 300:
@@ -113,11 +120,26 @@ def play():
         return
     
     #computer movement
-    computer.forward(computerSpeed)
+    #computer.forward(computerSpeed)
+    #y = computer.ycor()
+    #if y < -250 or y > 250:
+    #    computerSpeed *= -1
+
+    #changed computer movement
+    ballX, ballY = ball.position()
     y = computer.ycor()
-    if y < -250 or y > 250:
-        computerSpeed *= -1
-    
+    if y != ballY:
+        if y < ballY:
+            computer.forward(5)
+        elif y > ballY:
+            computer.backward(5)
+    if y > 260:
+        y = 260
+        computer.sety(y)
+    if y < -260:
+        y = -260
+        computer.sety(y)
+
     #update timer
     seconds += 1
     timer.undo()
