@@ -54,8 +54,9 @@ computerSpeed = 15
 ball = Turtle("circle", visible = False)
 ball.speed("fast")
 ball.color("white")
+ball.shapesize(0.5, 0.5)
 ball.penup()
-#ball.sety(265)
+ball.sety(265)
 ball.showturtle()
 ballSpeed = 15
 ballChangeInX = 5
@@ -103,12 +104,11 @@ def play():
         scoreboard.write("Score {}".format(score), align = "left", font = ("Arial", 16, "normal"))
     elif isColliding(ball, computer):
         ballChangeInX *= -1
-    elif y < -300 or y > 300:
+    elif y < -290 or y > 290:
         ballChangeInY *= -1
-    elif x > 300:
-        ballChangeInY *= -1
-    elif x < -300:
+    elif x < -300 or x > 300:
         print("Game Over")
+        print("Final Score: {}".format(score))
         screen.bye()
         return
     
