@@ -133,6 +133,12 @@ def play():
             computer.forward(5)
         elif y > ballY:
             computer.backward(5)
+    if y > 260:
+        y = 260
+        computer.sety(y)
+    if y < -260:
+        y = -260
+        computer.sety(y)
 
     #update timer
     seconds += 1
