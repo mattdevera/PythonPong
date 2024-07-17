@@ -117,6 +117,8 @@ def play():
     y = computer.ycor()
     if y < -250 or y > 250:
         computerSpeed *= -1
+
+    #changed computer movement
     
     #update timer
     seconds += 1
